@@ -1,0 +1,33 @@
+tr.current-group {
+  background-color: #74dc74;
+}
+
+tr.current-request {
+  background-color: #ffd992;
+}
+
+.sharelink {
+  padding: 10px;
+  font-family: monospace;
+  width: 60%;
+  vertical-align: middle;
+  resize: none;
+
+  border-radius: 5px;
+  border: 0;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline: none;
+
+  background-color: #383838;
+  color: white;
+}
+
+@media (max-width: 767px) {
+  .sharelink {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
