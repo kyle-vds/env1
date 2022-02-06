@@ -57,32 +57,32 @@ class Layout {
           <li><a href="/registration?q=registration">Registration</a></li>
     <?}
     else{?>
-    	  <li><a href="/groups?q=groups">Group Editor</a></li>
+    	  <li><a href="/groups">Group Editor</a></li>
     	  <li><a href="/roomallocator?q=roomallocator">Room Selector</a></li>
     <?}?>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Room Ballot <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              <li><a href="/rooms?q=rooms">Rooms</a></li>
-              <li><a href="/roomballot?q=roomballot">Ballot</a></li>
+              <li><a href="/rooms">Rooms</a></li>
+              <li><a href="/roomballot">Ballot</a></li>
               </ul>
           </li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Housing Ballot <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              <li><a href="/houses?q=houses">Houses</a></li>
-              <li><a href="/housingballot?q=housingballot">Ballot</a></li>
+              <li><a href="/houses">Houses</a></li>
+              <li><a href="/housingballot">Ballot</a></li>
               </ul>
           </li>
 	<?if($user->isadmin()){?>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
               <ul class="dropdown-menu">
-              <li><a href="/controlpanel?q=controlpanel">Control Panel</a></li>
-              <li><a href="/pageeditor?q=pageeditor">Page Editor</a></li>
-              <li><a href="/balloteditor?q=balloteditor">Ballot Editor</a></li>
-              <li><a href="/roomeditor?q=roomeditor">Room Editor</a></li>
-              <li><a href="/imageeditor?q=imageeditor">Image Editor</a></li>
+              <li><a href="/controlpanel">Control Panel</a></li>
+              <li><a href="/pageeditor">Page Editor</a></li>
+              <li><a href="/balloteditor">Ballot Editor</a></li>
+              <li><a href="/roomeditor">Room Editor</a></li>
+              <li><a href="/imageeditor">Image Editor</a></li>
               </ul>
           </li>
     <?}?>
