@@ -10,7 +10,7 @@ DROP TABLE room_quotes;
 
 UPDATE pages SET url = 'registration', title = 'Registration' WHERE id = 1;
 UPDATE pages SET url = 'roomballot', title = 'Room Ballot' WHERE id = 2;
-UPDATE pages SET url = 'housingballot', title = 'Housing Ballot WHERE id = 4;
+UPDATE pages SET url = 'housingballot', title = 'Housing Ballot' WHERE id = 4;
 UPDATE pages SET url = 'pageeditor', title = 'Admin Page Editor' WHERE id = 7;
 UPDATE pages SET url = 'controlpanel', title = 'Admin Control Panel' WHERE id = 8;
 
