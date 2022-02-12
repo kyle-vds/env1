@@ -190,6 +190,7 @@ class ControlPanel {
 					$temp_group = new Group($result->fetch_assoc()['group_id'], $ballot->getName());
 					$temp_user = new User($temp_group->getAdmin());
 					$query = "UPDATE `ballot_log` SET `proxy` = '".$temp_user->getProxy()."' WHERE `year` = ".$ballot->getYear();
+					$result = Database::getInstance()->query($query);
 					if ($result){
 						HTML::sendEmail($temp_user->getProxy(), "URGENT: You have been given proxy access");
 						HTML::sendEmail($temp_user->getCRSID(), "URGENT: Your proxy has been given access");
