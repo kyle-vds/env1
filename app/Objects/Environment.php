@@ -7,7 +7,7 @@ class Environment {
 
 
   // set the following to true and add a message to disable the site to visitors
-  const maint_mode = TRUE;
+  const maint_mode = FALSE;
   const maint_message = "You need to enable the site in Environment.php";
 
   // database enviromental variables
