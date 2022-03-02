@@ -25,6 +25,7 @@ class BallotEditor {
 			return;
 		}
 		else {
+			if ($ballot->getStage() == 0) $ballot->showRemainingGroups();
 			if (isset($_POST['submit_remove'])){
 				$selected = 0;
 				if (isset($_POST['select_user'])) $selected = 1;
