@@ -320,9 +320,10 @@ class BallotMaker{
 			$result = Database::getInstance()->query($query);
 			if ($result){
 				if ($result->num_rows > 0){
-					$group = new Group($result->fetch_assoc()['group_id'], $this->name);
+					$row = $result->fetch_assoc();
+					$group = new Group($row['group_id'], $this->name);
 					if ($housing_ballot){
-						$query = "SELECT `id` FROM `houses` WHERE `size` = ".$group->getSize()." AND `available` = 1";
+						$query = "SELECT * FROM `houses` WHERE `size` = ".$group->getSize()." AND `available` = 1 AND `house` = 1";
 						$result = Database::getInstance()->query($query);
 						if ($result->num_rows > 0){
 							HTML::sendEmail($group->getAdmin(), "Your turn in the ballot!");
