@@ -134,8 +134,7 @@ class BallotMaker{
 	}
 	
 	public function drawSeed(){
-		$seed = self::fetchSeed();
-		$this->seed = $seed * self::fetchSeed();
+		$this->seed = self::fetchSeed();
 		$query = "UPDATE `ballot_log` SET `";
 		if ($this->stage == 1) $query .= "hb_seed";
 		elseif ($this->stage == 4) $query .= "rb_seed";
@@ -213,6 +212,16 @@ class BallotMaker{
 			if (!$result){
 				Database::getInstance()->query("rollback");
 				return false;
+			}
+			else{
+				$query = "SELECT `group_id` FROM `".$this->name."` WHERE `order` = 1";
+				$result = Database::getInstance()->query($query);
+				if ($result){
+						$row = $result->fetch_assoc();
+						$group = new Group($row['group_id'], $this->name);
+						HTML::sendEmail($group->getAdmin(), "Your turn in the ballot!");
+				}
+				else return false;
 			}
 		}
 		elseif ($this->getStage() == 2){
