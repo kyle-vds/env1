@@ -79,8 +79,8 @@ class RoomAllocator {
 			else HTML::HTMLerror("You must confirm your choices before submitting them");
 		}
 		$open = 0;
-		if ($user->getBallot() == "housing_ballot" && $ballot->getStage() == 2) $open = 1;
-		elseif ($user->getBallot() == "room_ballot" && $ballot->getStage() == 5) $open = 1;
+		if ($user->getBallot() == "housing_ballot" && $ballot->getStage() > 2) $open = 1;
+		elseif ($user->getBallot() == "room_ballot" && $ballot->getStage() > 5) $open = 1;
 		if (!$open) HTML::HTMLerror("Your Ballot has not yet been drawn, therefore room allocation is currently closed");
 		else {
 			$proxy = 0;
@@ -92,7 +92,9 @@ class RoomAllocator {
 				else $group = new Group($result->fetch_assoc()['group_id'], $ballot->getName());
 			}
 			else $group = new Group($user->getGroup(), $user->getBallot());
-			if ($group->getOrder() == $ballot->getPosition()){
+			if ($user->getBallot() != $ballot->getName()) $position = $group->getOrder() + 1;
+			else $position = $ballot->getPosition();
+			if ($group->getOrder() == $position){
   				if(($group->getAdmin() == $user->getCRSID() || $proxy) && $user->getBallot() == "room_ballot"){
   					$query = "SELECT `id` FROM `houses` WHERE `house` = 0";
   					$result = Database::getInstance()->query($query);
@@ -182,8 +184,8 @@ class RoomAllocator {
 				}
   				else HTML::HTMLsuccess("It is your turn in the ballot! Please get your group admin to select your rooms!");
   			}
-  			elseif ($group->getOrder() > $ballot->getPosition()){
-  				$remaining_places = $group->getOrder() - $ballot->getPosition();
+  			elseif ($group->getOrder() > $position){
+  				$remaining_places = $group->getOrder() - $position;
   				HTML::HTMLerror("It is not yet your turn in the ballot, there are currently ".$remaining_places." groups ahead of you who need to choose");
   			}
   			else{
