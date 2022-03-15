@@ -79,8 +79,8 @@ class RoomAllocator {
 			else HTML::HTMLerror("You must confirm your choices before submitting them");
 		}
 		$open = 0;
-		if ($user->getBallot() == "housing_ballot" && $ballot->getStage() > 2) $open = 1;
-		elseif ($user->getBallot() == "room_ballot" && $ballot->getStage() > 5) $open = 1;
+		if ($user->getBallot() == "housing_ballot" && $ballot->getStage() >= 2) $open = 1;
+		elseif ($user->getBallot() == "room_ballot" && $ballot->getStage() >= 5) $open = 1;
 		if (!$open) HTML::HTMLerror("Your Ballot has not yet been drawn, therefore room allocation is currently closed");
 		else {
 			$proxy = 0;
