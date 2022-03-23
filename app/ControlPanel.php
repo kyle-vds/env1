@@ -221,6 +221,13 @@ class ControlPanel {
 						if ($result){
 							if ($temp_group->newPosition($row = $result->fetch_assoc()['order'])){
 								HTML::sendEmail($temp_group->getAdmin(), "URGENT: Pushed to end of ballot");
+								$query = "SELECT `group_id` FROM `".$ballot->getName()."` WHERE `order` = ".$ballot->getPosition();
+								$result = Database::getInstance()->query($query);
+								if ($result){
+									$temp_group = new Group($result->fetch_assoc()['group_id'], $ballot->getName());
+									HTML::sendEmail($temp_group->getAdmin(), "Your turn in the ballot!");
+								}
+								else $errors = 1;
 							}
 							else $errors = 1;
 						}

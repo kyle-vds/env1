@@ -331,22 +331,22 @@ class BallotMaker{
 				if ($result->num_rows > 0){
 					$row = $result->fetch_assoc();
 					$group = new Group($row['group_id'], $this->name);
-					if ($housing_ballot){
-						$query = "SELECT * FROM `houses` WHERE `size` = ".$group->getSize()." AND `available` = 1 AND `house` = 1";
-						$result = Database::getInstance()->query($query);
-						if ($result->num_rows > 0){
-							HTML::sendEmail($group->getAdmin(), "Your turn in the ballot!");
-							return true;
-						}
-						else {
-							if ($this->pushOrder(1, $new_position)) return true;
-							else return false;
-						}
-					}
-					else{
+					#if ($housing_ballot){
+					#	$query = "SELECT * FROM `houses` WHERE `size` = ".$group->getSize()." AND `available` = 1 AND `house` = 1";
+					#	$result = Database::getInstance()->query($query);
+					#	if ($result->num_rows > 0){
+					#		HTML::sendEmail($group->getAdmin(), "Your turn in the ballot!");
+					#		return true;
+					#	}
+					#	else {
+					#		if ($this->pushOrder(1, $new_position)) return true;
+					#		else return false;
+					#	}
+					#}
+					#else{
 						HTML::sendEmail($group->getAdmin(), "Your turn in the ballot!");
 						return true;
-					}
+					}#
 				}
 				else{
 					$query = "SELECT `crsid` FROM `admin`";
